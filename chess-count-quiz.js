@@ -291,8 +291,15 @@ function showMoves() {
     showMovesButton.style.backgroundColor = "#d3d3d3"; // Grey out the button
 
     chess_data.questionTypes.forEach((id) => {
-	const shownMovesLabel = document.getElementById(id + "ShownMoves");
-	shownMovesLabel.textContent = chess_data.correct[id].moves;
+        const shownMovesLabel = document.getElementById(id + "ShownMoves");
+        const moves = chess_data.correct[id].moves;
+        shownMovesLabel.textContent = moves;
+
+        // Add arrows to the chessboard for each move
+        moves.forEach(move => {
+            const [from, to] = move.split('-'); // Assuming moves are in 'e2-e4' format
+            chess_data.board.addArrow(from, to, { color: 'blue' }); // Add arrow with blue color
+        });
     });
 }
 
