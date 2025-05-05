@@ -296,9 +296,14 @@ function showMoves() {
         shownMovesLabel.textContent = moves;
 
         // Add arrows to the chessboard for each move
-        moves.forEach(move => {
-            const [from, to] = move.split('-'); // Assuming moves are in 'e2-e4' format
-            chess_data.board.addArrow(from, to, { color: 'blue' }); // Add arrow with blue color
+        moves.forEach(moveSan => {
+            const tempGame = new Chess(chess_data.fen); // Create a temporary game instance with the current FEN
+            const move = tempGame.move(moveSan); // Parse the SAN move
+            if (move) {
+                chess_data.board.addArrow(move.from, move.to, { color: 'blue' }); // Add arrow with blue color
+            } else {
+                console.warn(`Move ${moveSan} could not be parsed in the given FEN context.`);
+            }
         });
     });
 }
