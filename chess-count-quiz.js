@@ -620,7 +620,7 @@ function setPlayerToMove(selected) {
 
 // Initialize the board based on the player to move
 function setBoard() {
-    chess_data.board = Chessboard('board', 'start');
+    chess_data.board = Chessboard2('board', 'start');
     if (chess_data.playerToMove == 'b') {
 	chess_data.board.flip();
     }
