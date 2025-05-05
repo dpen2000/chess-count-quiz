@@ -553,7 +553,7 @@ async function loadSettings() {
     };
 
     // Timer
-    chess_data.showTimer = localStorage.getItem('showTimer') === 'false' ? false : true;
+    chess_data.showTimer = localStorage.getItem('showTimer') === 'true'; // Default to false if not set
     document.getElementById('showTimer').checked = chess_data.showTimer; // Set the checkbox state
     setTimerVisibility(chess_data.showTimer);
     initTimer();
